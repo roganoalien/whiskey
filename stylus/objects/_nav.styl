@@ -1,0 +1,88 @@
+@keyframes animate-buzz {
+	50% {
+		transform translateX(3px) rotate(2deg)
+	}
+	100% {
+		transform translateX(-3px) rotate(-2deg)
+	}
+}
+.main-navigation{
+	background transparent !important
+	height 96px
+	position relative
+	z-index 100
+	ul{
+		flex-container()
+		list-style none
+	}
+	.left-side, .right-side{
+		position-select(50%, 50%)
+		margin 0
+		padding 0
+		li{
+			margin-right 30px
+			a{
+				color $c-white-more
+				font-weight $w-bold
+				padding 20px 0
+				position relative
+				text-decoration none
+				transition color .15s ease-in-out
+				&:after, &:before{
+					position-select(50%, 50%)
+					content attr(data-title)
+					color $c-yellow
+					font-weight $w-regular
+					opacity 0
+					transform translate(-50%, -50%)
+					transition all .15s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+					white-space nowrap
+					z-index -1
+				}
+			}
+			&:hover, &.active{
+				a{
+					color $c-yellow
+					&:after{
+						opacity .25
+						transform translate(-65%, -60%)
+					}
+					&:before{
+						opacity .25
+						transform translate(-35%, -40%)
+					}
+				}
+			}
+			&:last-child{
+				margin-right 0
+			}
+		}
+	}
+	.nav-container{
+		height 100%
+		position relative
+		.center-side{
+			position-select(50%, 50%)
+			height 100%
+			transform translate(-50%,-50%)
+			width 160px
+			img{
+				position-select(50%, 50%)
+				transform translate(-50%, -50%) scale(.9)
+				z-index 1
+				&.circle{
+					transform translate(-50%, -50%) scale(1)
+					z-index 2
+				}
+			}
+		}
+		.left-side{
+			transform translate(-100% - 28px, -50%)
+		}
+		.right-side{
+			left auto
+			right 50%
+			transform translate(100% + 33px, -50%)
+		}
+	}
+}

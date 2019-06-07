@@ -3,6 +3,7 @@ const gulp = require('gulp'),
     babel = require('gulp-babel'),
     concat = require('gulp-concat'),
     log = require('./logger'),
+    minify = require('gulp-minify'),
     rename = require('gulp-rename'),
     stylus = require('gulp-stylus'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -15,13 +16,11 @@ const $vendors = './node_modules',
     // Variables de los VENDORS en CSS
     $cssVendorsFolder = './assets/css/vendors',
     $bootstrap = `${$vendors}/bootstrap/dist/css/bootstrap.css`,
-    $dashboard = `${$vendors}/startbootstrap-sb-admin/css/sb-admin.css`,
-    $notyfCSS = `${$vendors}/notyf/notyf.min.css`,
-    $cssVendors = [$bootstrap, $dashboard, $notyfCSS],
+    $cssVendors = [$bootstrap],
     // Variables de los VENDORS en JS
     $jsVendorsFolder = './assets/js/vendors',
-    $notyf = `${$vendors}/notyf/notyf.min.js`,
-    $jsVendors = [$notyf];
+    $swiper = `${$vendors}/swiper/dist/js/swiper.js`,
+    $jsVendors = [$swiper];
 
 ////////////////////
 // Error FUNCTION //
@@ -45,7 +44,6 @@ gulp.task('stylus', () => {
         .on('error', displayError)
         .pipe(
             autoprefixer({
-                browsers: ['last 2 versions'],
                 cascade: true
             })
         )
@@ -101,11 +99,11 @@ gulp.task('css-vendors', () => {
 //////////////////////////////////////
 gulp.task('js-vendors', () => {
     return gulp
-        .src($jsVendors, { base: $vendors })
+        .src($jsVendors, { allowEmpty: true, base: $vendors })
         .pipe(concat('jsVendors.js'))
         .pipe(rename('vendors.min.js'))
         .on('error', displayError)
-        .pipe(gulp.dest('./public/js/vendors'))
+        .pipe(gulp.dest($jsVendorsFolder))
         .on('end', () => {
             log('Js Vendors Compilados', 'yellow');
         });
