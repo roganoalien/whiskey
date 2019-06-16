@@ -17,12 +17,15 @@ const $vendors = './node_modules',
     $cssVendorsFolder = './assets/css/vendors',
     $bootstrap = `${$vendors}/bootstrap/dist/css/bootstrap.css`,
     $videoCSS = `./vendor/vidbg.css`,
-    $cssVendors = [$bootstrap, $videoCSS],
+    $lityCSS = './vendor/lity.min.css',
+    $cssVendors = [$bootstrap, $videoCSS, $lityCSS],
     // Variables de los VENDORS en JS
     $jsVendorsFolder = './assets/js/vendors',
     $swiper = `${$vendors}/swiper/dist/js/swiper.js`,
     $videoJS = `./vendor/vidbg.js`,
-    $jsVendors = [$swiper, $videoJS];
+    $lityJS = './vendor/lity.min.js',
+    $jQuery = `./vendor/jquery.js`,
+    $jsVendors = [$jQuery, $videoJS, $lityJS];
 
 ////////////////////
 // Error FUNCTION //

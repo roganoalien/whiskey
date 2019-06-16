@@ -1,7 +1,5 @@
 const UTILS = (function() {
     return {
-        init: function() {
-            alert();
-        }
+        modal: function() {}
     };
 })();
