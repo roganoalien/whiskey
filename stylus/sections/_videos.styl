@@ -1,6 +1,6 @@
 .videos-container{
-	background url(../images/bg-temp.png) no-repeat center center
-	background-size cover
+	// background url(../images/bg-temp.png) no-repeat center center
+	// background-size cover
 	height 100vh
 	margin-top -96px
 	position relative
@@ -11,13 +11,124 @@
 		background-size contain
 		height 100%
 		opacity .6
+		pointer-events none
 		width 100%
+		z-index 3
 	}
 	.logo{
 		position-select(50%, 125px)
 		height auto
-		transform translate(-50%, 0)
-		width 150px
+		transform translate(-50%, -40%)
+		width 90px
 		z-index 2
+	}
+	.mouse-icon-holder{
+		flex-container(center, column, center)
+		position-select(50%, 0, absolute, true, false)
+		transform translate(-50%, 0)
+		.line{
+			background $c-white
+			height 10vh
+			opacity .5
+			width 2px
+		}
+		svg{
+			animation-name mouser
+			animation-duration 2s
+			animation-iteration-count infinite
+			opacity .5
+			transform scale(.5) translateY(0)
+			margin-bottom 20px
+		}
+		@keyframes mouser {
+			0%{
+				opacity .5
+				transform scale(.5) translateY(0)
+			}
+			100%{
+				opacity 0
+				transform scale(.5) translateY(100%)
+			}
+		}
+	}
+	.swiper-wrapper{
+		position-select(0,0)
+		height 100vh
+		transform none !important
+		width 100vw
+	}
+	.swiper-slide{
+		flex-container(center, column, center)
+		position-select(0,0)
+		height 100vh
+		opacity 0
+		pointer-events none
+		width 100vw
+		z-index 1
+		&.swiper-slide-active{
+			opacity 1
+			pointer-events auto
+			h2{
+				opacity 1
+				transform scale(1) !important
+			}
+		}
+		button{
+			background transparent
+			border 3px solid $c-yellow
+			border-radius 20px
+			color $c-yellow
+			cursor pointer
+			font-size 20px
+			height 45px
+			padding-bottom 3px
+			position relative
+			transition all .25s ease-in-out
+			width 160px
+			z-index 2
+			&:hover{
+				background $c-yellow
+				color $c-black
+			}
+		}
+		h2{
+			color $c-white
+			margin 0
+			opacity 0
+			position relative
+			transform scale(0)
+			transition all .5s ease-in-out
+			z-index 2
+			&.title-bold{
+				font-size 60px
+				font-weight $w-bold
+				text-transform uppercase
+				transition-delay 0
+			}
+			&.title-light{
+				font-size 45px
+				font-weight $w-light
+				margin-bottom 20px
+				text-transform uppercase
+				transition-delay .25s
+			}
+		}
+		#video-bg{
+			position-select(0,0)
+			height 100vh
+			opacity .5
+			overflow hidden
+			position absolute !important
+			width 100vw
+			z-index -1
+			.vidbg-container{
+				height 100%
+				width 100%
+				video{
+					position-select(50%, 50%)
+					transform translate(-50%, -50%)
+				}
+			}
+		}
 	}
 }

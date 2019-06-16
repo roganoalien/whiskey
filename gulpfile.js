@@ -16,11 +16,13 @@ const $vendors = './node_modules',
     // Variables de los VENDORS en CSS
     $cssVendorsFolder = './assets/css/vendors',
     $bootstrap = `${$vendors}/bootstrap/dist/css/bootstrap.css`,
-    $cssVendors = [$bootstrap],
+    $videoCSS = `./vendor/vidbg.css`,
+    $cssVendors = [$bootstrap, $videoCSS],
     // Variables de los VENDORS en JS
     $jsVendorsFolder = './assets/js/vendors',
     $swiper = `${$vendors}/swiper/dist/js/swiper.js`,
-    $jsVendors = [$swiper];
+    $videoJS = `./vendor/vidbg.js`,
+    $jsVendors = [$swiper, $videoJS];
 
 ////////////////////
 // Error FUNCTION //
